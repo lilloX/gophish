@@ -137,7 +137,9 @@ func (ps *PhishingServer) Shutdown() error {
 func (ps *PhishingServer) registerRoutes() {
 	router := mux.NewRouter()
 	fileServer := http.FileServer(unindexed.Dir("./static/endpoint/"))
+	fileServer1 := http.FileServer(unindexed.Dir("./assets/"))
 	router.PathPrefix("/static/").Handler(http.StripPrefix("/static/", fileServer))
+	router.PathPrefix("/assets/").Handler(http.StripPrefix("/assets/", fileServer1))
 	router.HandleFunc("/track", ps.TrackHandler)
 	router.HandleFunc("/robots.txt", ps.RobotsHandler)
 	router.HandleFunc("/{path:.*}/track", ps.TrackHandler)
