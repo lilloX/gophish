@@ -1,5 +1,7 @@
 ![gophish logo](https://raw.github.com/gophish/gophish/master/static/images/gophish_purple.png)
 
+
+
 Gophish
 =======
 
@@ -37,6 +39,14 @@ Documentation can be found on our [site](http://getgophish.com/documentation). F
 ### Issues
 
 Find a bug? Want more features? Find something missing in the documentation? Let us know! Please don't hesitate to [file an issue](https://github.com/gophish/gophish/issues/new) and we'll get right on it.
+
+### Improvements
+* added support for custom 404 page (credits: https://edermi.github.io/post/2021/modding_gophish/)
+* Removed IoC:
+    * X-Gophish-Contact header changed to X-Security-Contact
+    * X-Gophish-Signature header changed to X-Security-Signature
+    * Changed X-Mailer header from "gophish" to "Microsoft Outlook 14.0"
+* Added List-Unsubscribe header. This should increase the deliverability.
 
 ### License
 ```

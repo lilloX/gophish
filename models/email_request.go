@@ -117,10 +117,13 @@ func (s *EmailRequest) Generate(msg *gomail.Message) error {
 	}
 	s.URL = url
 
+	// Add a fake List-Unsubscribe. this is useless but it seems increase the deliverability
+	msg.SetHeader("List-Unsubscribe","mailto:"+conf.ContactAddress+"?subject=unsubscribe")
+
 	// Add the transparency headers
 	msg.SetHeader("X-Mailer", config.ServerName)
 	if conf.ContactAddress != "" {
-		msg.SetHeader("X-Gophish-Contact", conf.ContactAddress)
+		msg.SetHeader("X-Security-Contact", conf.ContactAddress)
 	}
 
 	// Parse the customHeader templates
